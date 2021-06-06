@@ -1,18 +1,19 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { string, shape } from "prop-types";
+import Icon from "./Icon";
 
 export default function CircleButton(props) {
-  const { children, style } = props;
+  const { style, name } = props;
   return (
     <View style={[styles.circleButton, style]}>
-      <Text style={styles.circleButtonRadius}>{children}</Text>
+      <Icon name={name} size={40} color="white" />
     </View>
   );
 }
 
 CircleButton.propTypes = {
-  children: string.isRequired,
+  name: string.isRequired,
   style: shape(),
 };
 

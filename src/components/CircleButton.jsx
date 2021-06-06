@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { string, shape } from "prop-types";
 import Icon from "./Icon";
 
@@ -37,10 +37,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 8,
     elevation: 8,
-  },
-  circleButtonRadius: {
-    color: "#ffffff",
-    fontSize: 40,
-    lineHeight: 40,
   },
 });

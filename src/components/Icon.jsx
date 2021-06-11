@@ -1,10 +1,10 @@
-import React from "react";
-import { createIconSetFromIcoMoon } from "@expo/vector-icons";
-import { useFonts } from "@use-expo/font";
-import { string, number, oneOf } from "prop-types";
+import React from 'react';
+import { createIconSetFromIcoMoon } from '@expo/vector-icons';
+import { useFonts } from '@use-expo/font';
+import { string, number, oneOf } from 'prop-types';
 
-import icomoon from "../../assets/fonts/icomoon.ttf";
-import selection from "../../assets/fonts/selection.json";
+import icomoon from '../../assets/fonts/icomoon.ttf';
+import selection from '../../assets/fonts/selection.json';
 
 export default function Icon(props) {
   const [fontLoaded] = useFonts({ icomoon });
@@ -24,12 +24,13 @@ export default function Icon(props) {
 }
 
 Icon.propTypes = {
-  name: oneOf(["plus", "delete", "pencil", "check"]).isRequired,
+  name: oneOf(['plus', 'delete', 'pencil', 'check'])
+    .isRequired,
   size: number,
   color: string,
 };
 
 Icon.defaultProps = {
   size: 24,
-  color: "#000",
+  color: '#000',
 };

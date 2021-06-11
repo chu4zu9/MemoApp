@@ -1,26 +1,42 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Keyboard, Dimensions, Animated, ViewPropTypes } from "react-native";
-import { node } from "prop-types";
+import React, { useRef, useState, useEffect } from 'react';
+import {
+  Keyboard,
+  Dimensions,
+  Animated,
+  ViewPropTypes,
+} from 'react-native';
+import { node } from 'prop-types';
 
-export default function KeyboardSafeView({ children, style }) {
+export default function KeyboardSafeView({
+  children,
+  style,
+}) {
   const initialViewHeight = useRef(null);
   const animatedViewHeight = useRef(null);
   const [viewHeight, setViewHeight] = useState(null);
 
   useEffect(() => {
-    Keyboard.addListener("keyboardDidShow", handleShow);
-    Keyboard.addListener("keyboardDidHide", handleHide);
+    Keyboard.addListener('keyboardDidShow', handleShow);
+    Keyboard.addListener('keyboardDidHide', handleHide);
     return () => {
-      Keyboard.removeListener("keyboardDidShow", handleShow);
-      Keyboard.removeListener("keyboardDidHide", handleHide);
+      Keyboard.removeListener(
+        'keyboardDidShow',
+        handleShow,
+      );
+      Keyboard.removeListener(
+        'keyboardDidHide',
+        handleHide,
+      );
     };
   }, []);
 
   useEffect(() => {
     if (
-      [initialViewHeight, animatedViewHeight, viewHeight].some(
-        (val) => val === null
-      )
+      [
+        initialViewHeight,
+        animatedViewHeight,
+        viewHeight,
+      ].some((val) => val === null)
     ) {
       return;
     }
@@ -42,10 +58,15 @@ export default function KeyboardSafeView({ children, style }) {
   }, [viewHeight]);
 
   const handleShow = ({ endCoordinates }) => {
-    if (endCoordinates.height && initialViewHeight.current) {
-      const keyboardHeight =
-        Dimensions.get("window").height - endCoordinates.screenY;
-      setViewHeight(initialViewHeight.current - keyboardHeight);
+    if (
+      endCoordinates.height
+      && initialViewHeight.current
+    ) {
+      const keyboardHeight = Dimensions.get('window').height
+        - endCoordinates.screenY;
+      setViewHeight(
+        initialViewHeight.current - keyboardHeight,
+      );
     }
   };
 
@@ -59,18 +80,23 @@ export default function KeyboardSafeView({ children, style }) {
       // keep viewHeight as null not to trigger useEffect on mounting.
       // Don't do this: setViewHeight(height);
       initialViewHeight.current = height;
-      animatedViewHeight.current = new Animated.Value(height);
+      animatedViewHeight.current = new Animated.Value(
+        height,
+      );
     }
   };
 
   const animatedStyle = viewHeight
     ? {
-        height: animatedViewHeight.current,
-        flex: 0,
-      }
+      height: animatedViewHeight.current,
+      flex: 0,
+    }
     : {};
   return (
-    <Animated.View style={[style, animatedStyle]} onLayout={handleLayout}>
+    <Animated.View
+      style={[style, animatedStyle]}
+      onLayout={handleLayout}
+    >
       {children}
     </Animated.View>
   );

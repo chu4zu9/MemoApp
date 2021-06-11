@@ -1,16 +1,20 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
-import AppBar from "../components/AppBar";
-import CircleButton from "../components/CircleButton";
-import MemoList from "../components/MemoList";
+import CircleButton from '../components/CircleButton';
+import MemoList from '../components/MemoList';
 
-export default function MemoListScreen() {
+export default function MemoListScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
-      <AppBar />
       <MemoList />
-      <CircleButton name="plus"></CircleButton>
+      <CircleButton
+        name="plus"
+        onPress={() => {
+          navigation.navigate('MemoCreate');
+        }}
+      />
     </View>
   );
 }
@@ -18,6 +22,6 @@ export default function MemoListScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f0f4f8",
+    backgroundColor: '#f0f4f8',
   },
 });

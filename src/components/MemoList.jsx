@@ -5,14 +5,22 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import Icon from './Icon';
 
 export default function MemoList() {
+  const navigation = useNavigation();
   return (
     <View>
-      <View style={styles.memoListItem}>
+      <TouchableOpacity
+        style={styles.memoListItem}
+        onPress={() => {
+          navigation.navigate('MemoDetail');
+        }}
+      >
         <View>
           <Text style={styles.memoListItemTitle}>
             買い物リスト
@@ -21,11 +29,21 @@ export default function MemoList() {
             2020年12月24日 10:00
           </Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          style={styles.memoDelete}
+          onPress={() => {
+            Alert.alert('うんち');
+          }}
+        >
           <Icon name="delete" size={24} color="#b0b0b0" />
         </TouchableOpacity>
-      </View>
-      <View style={styles.memoListItem}>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.memoListItem}
+        onPress={() => {
+          navigation.navigate('MemoDetail');
+        }}
+      >
         <View>
           <Text style={styles.memoListItemTitle}>
             買い物リスト
@@ -34,11 +52,21 @@ export default function MemoList() {
             2020年12月24日 10:00
           </Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          style={styles.memoDelete}
+          onPress={() => {
+            Alert.alert('ウンチ');
+          }}
+        >
           <Icon name="delete" size={24} color="#b0b0b0" />
         </TouchableOpacity>
-      </View>
-      <View style={styles.memoListItem}>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.memoListItem}
+        onPress={() => {
+          navigation.navigate('MemoDetail');
+        }}
+      >
         <View>
           <Text style={styles.memoListItemTitle}>
             買い物リスト
@@ -47,10 +75,15 @@ export default function MemoList() {
             2020年12月24日 10:00
           </Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          style={styles.memoDelete}
+          onPress={() => {
+            Alert.alert('unchi');
+          }}
+        >
           <Icon name="delete" size={24} color="#b0b0b0" />
         </TouchableOpacity>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -74,5 +107,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     color: '#848484',
+  },
+  memoDelete: {
+    padding: 8,
   },
 });

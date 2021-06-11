@@ -4,7 +4,8 @@ import { StyleSheet, View, TextInput } from 'react-native';
 import CircleButton from '../components/CircleButton';
 import KeyboardSafeView from '../components/KeyboardSafeView';
 
-export default function MemoCreateScreen() {
+export default function MemoCreateScreen(props) {
+  const { navigation } = props;
   return (
     <KeyboardSafeView style={styles.container}>
       <View style={styles.inputContainer}>
@@ -14,7 +15,12 @@ export default function MemoCreateScreen() {
           style={styles.input}
         />
       </View>
-      <CircleButton name="check" />
+      <CircleButton
+        name="check"
+        onPress={() => {
+          navigation.goBack();
+        }}
+      />
     </KeyboardSafeView>
   );
 }

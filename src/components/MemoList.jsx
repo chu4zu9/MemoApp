@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import React from 'react';
 import {
   StyleSheet,
@@ -31,9 +30,7 @@ export default function MemoList() {
         </View>
         <TouchableOpacity
           style={styles.memoDelete}
-          onPress={() => {
-            Alert.alert('うんち');
-          }}
+          onPress={() => {}}
         >
           <Icon name="delete" size={24} color="#b0b0b0" />
         </TouchableOpacity>
@@ -54,9 +51,7 @@ export default function MemoList() {
         </View>
         <TouchableOpacity
           style={styles.memoDelete}
-          onPress={() => {
-            Alert.alert('ウンチ');
-          }}
+          onPress={() => {}}
         >
           <Icon name="delete" size={24} color="#b0b0b0" />
         </TouchableOpacity>
@@ -77,9 +72,7 @@ export default function MemoList() {
         </View>
         <TouchableOpacity
           style={styles.memoDelete}
-          onPress={() => {
-            Alert.alert('unchi');
-          }}
+          onPress={() => {}}
         >
           <Icon name="delete" size={24} color="#b0b0b0" />
         </TouchableOpacity>

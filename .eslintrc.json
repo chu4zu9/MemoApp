@@ -16,7 +16,7 @@
     "no-use-before-define": 0,
     "react/prop-types": [
       "error",
-      { "ingnore": ["navigation"] }
+      { "ignore": ["navigation"] }
     ]
   }
 }

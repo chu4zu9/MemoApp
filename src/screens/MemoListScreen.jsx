@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
+import firebase from 'firebase';
 
 import CircleButton from '../components/CircleButton';
 import MemoList from '../components/MemoList';
@@ -12,6 +13,29 @@ export default function MemoListScreen(props) {
     navigation.setOptions({
       headerRight: () => <LogOutButton />,
     });
+  }, []);
+
+  useEffect(() => {
+    const db = firebase.firestore();
+    const { currentUser } = firebase.auth();
+    let unsubscribe = () => {};
+    if (currentUser) {
+      const ref = db
+        .collection(`users/${currentUser.uid}/memos`)
+        .orderBy('updatedAt', 'desc');
+      unsubscribe = ref.onSnapshot(
+        (snapshot) => {
+          snapshot.forEach((doc) => {
+            console.log(doc.id, doc.data());
+          });
+        },
+        (error) => {
+          console.log(error);
+          Alert.alert('データの読み込みに失敗しました');
+        }
+      );
+    }
+    return unsubscribe;
   }, []);
 
   return (

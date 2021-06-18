@@ -13,7 +13,7 @@ export default function MemoCreateScreen(props) {
     const { currentUser } = firebase.auth();
     const db = firebase.firestore();
     const ref = db.collection(
-      `users/${currentUser.uid}/memos`
+      `users/${currentUser.uid}/memos`,
     );
     ref
       .add({

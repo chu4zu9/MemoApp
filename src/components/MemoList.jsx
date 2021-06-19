@@ -29,7 +29,10 @@ export default function MemoList(props) {
         }}
       >
         <View>
-          <Text style={styles.memoListItemTitle}>
+          <Text
+            style={styles.memoListItemTitle}
+            numberOfLines={1}
+          >
             {item.bodyText}
           </Text>
           <Text style={styles.memoListItemDate}>

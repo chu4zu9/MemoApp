@@ -9,6 +9,7 @@ import { shape, string } from 'prop-types';
 import firebase from 'firebase';
 
 import CircleButton from '../components/CircleButton';
+import { dateToString } from '../utils';
 
 export default function MemoDetailScreen(props) {
   const { navigation, route } = props;
@@ -45,7 +46,7 @@ export default function MemoDetailScreen(props) {
           {memo && memo.bodyText}
         </Text>
         <Text style={styles.memoDate}>
-          {memo && String(memo.updatedAt)}
+          {memo && dateToString(memo.updatedAt)}
         </Text>
       </View>
 

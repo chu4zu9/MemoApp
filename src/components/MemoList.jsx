@@ -15,6 +15,7 @@ import {
 } from 'prop-types';
 
 import Icon from './Icon';
+import { dateToString } from '../utils';
 
 export default function MemoList(props) {
   const { memos } = props;
@@ -38,7 +39,7 @@ export default function MemoList(props) {
             {item.bodyText}
           </Text>
           <Text style={styles.memoListItemDate}>
-            {String(item.updatedAt)}
+            {dateToString(item.updatedAt)}
           </Text>
         </View>
         <TouchableOpacity

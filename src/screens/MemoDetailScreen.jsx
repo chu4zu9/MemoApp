@@ -16,8 +16,6 @@ export default function MemoDetailScreen(props) {
   const { id } = route.params;
   const [memo, setMemo] = useState(null);
 
-  console.log(id);
-
   useEffect(() => {
     const { currentUser } = firebase.auth();
     let unsubscribe = () => {};
@@ -27,7 +25,6 @@ export default function MemoDetailScreen(props) {
         .collection(`users/${currentUser.uid}/memos`)
         .doc(id);
       unsubscribe = ref.onSnapshot((doc) => {
-        console.log(doc.id, doc.data());
         const data = doc.data();
         setMemo({
           id: doc.id,

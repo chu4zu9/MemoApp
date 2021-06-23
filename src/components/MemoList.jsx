@@ -53,7 +53,7 @@ export default function MemoList(props) {
           });
         }}
       >
-        <View>
+        <View style={styles.memoInner}>
           <Text
             style={styles.memoListItemTitle}
             numberOfLines={1}
@@ -121,5 +121,8 @@ const styles = StyleSheet.create({
   },
   memoDelete: {
     padding: 8,
+  },
+  memoInner: {
+    flex: 1,
   },
 });

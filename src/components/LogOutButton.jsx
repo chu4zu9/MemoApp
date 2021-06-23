@@ -8,7 +8,7 @@ import {
 import firebase from 'firebase';
 import { useNavigation } from '@react-navigation/native';
 
-export default function () {
+export default function LogOutButton() {
   const navigation = useNavigation();
 
   function handlePress() {
